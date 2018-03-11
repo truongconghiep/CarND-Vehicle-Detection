@@ -14,7 +14,7 @@ from sklearn.preprocessing import StandardScaler
 
 def Read_Data(dirName):
     # Read in car and non-car images
-    images = glob.glob(dirName + '/*.png')
+    images = glob.glob(dirName + '/*.jpeg')
     cars = []
     notcars = []
     for image in images:
