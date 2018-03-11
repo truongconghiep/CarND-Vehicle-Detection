@@ -14,14 +14,16 @@ from sklearn.preprocessing import StandardScaler
 
 def Read_Data(dirName):
     # Read in car and non-car images
-    images = glob.glob(dirName + '/*.jpeg')
+    images = glob.glob(dirName + '/*.png')
     cars = []
     notcars = []
     for image in images:
-        if 'image' in image or 'extra' in image:
+        if 'image0' in image:
+            cars.append(image)
+        elif 'image' in image or 'extra' in image:
             notcars.append(image)
         else:
-                cars.append(image)
+            cars.append(image)
     return cars, notcars
     
 
@@ -61,9 +63,9 @@ def Training_Classifier_Pipeline(data, output_name = 'Svm.pkl', color_space = 'Y
     cars, notcars = Read_Data(data)
     # Reduce the sample size because HOG features are slow to compute
     # The quiz evaluator times out after 13s of CPU time
-    sample_size = 5000
-    cars = cars[0:sample_size]
-    notcars = notcars[0:sample_size]
+#     sample_size = 5000
+#     cars = cars[0:sample_size]
+#     notcars = notcars[0:sample_size]
     # Get feature in data images
     t=time.time()
     car_features = extract_features(cars, color_space=color_space, 

@@ -7,6 +7,7 @@ import matplotlib.image as mpimg
 import numpy as np
 import cv2
 from skimage.feature import hog
+import matplotlib.pyplot as plt
 
 def convert_color(img, conv='YCrCb'):
     if conv == 'YCrCb':
@@ -161,7 +162,8 @@ def extract_features(imgs, color_space='RGB', spatial_size=(32, 32),
     return features
 
 
-def find_cars(img, color_space, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins):
+def find_cars(img, color_space, ystart, ystop, scale, svc, X_scaler, 
+              orient, pix_per_cell, cell_per_block, spatial_size, hist_bins):
     rectagle = []
     img = img.astype(np.float32)/255
     
@@ -259,4 +261,59 @@ def draw_labeled_bboxes(img, labels):
     # Return the image and final rectangles
     return img, rects
 
+def Plot_Images(images, number_img_per_row, title = None, sub_plt_titles  = []):
+    """
+        This function plot an arbitrary number of images
+            input: 
+                images: a numpy array of images
+                title: a title for the plot
+    """
+    image_number = len(images)
+    if image_number == 1:
+        plt.title(title)
+        if (images[0].ndim == 2) or (images[0].shape[2] == 1):
+            plt.imshow(images[0], cmap='gray')
+        else:
+            plt.imshow(images[0])
+    else:
+        if image_number % number_img_per_row == 0:
+            number_row = image_number / number_img_per_row
+        else:
+            number_row = image_number / number_img_per_row + 1
+        fig, axs = plt.subplots(int(number_row),number_img_per_row, 
+                            figsize=(16, 4 * image_number/number_img_per_row))
+        if title!=None:
+            fig.suptitle(title, fontsize=18)
+        axs = axs.ravel()    
+        for n in range(0,image_number):
+            axs[n].axis('off')
+            axs[n].set_title(sub_plt_titles[n])
+            if images[n].ndim == 2:
+                axs[n].imshow(images[n], cmap='gray')
+            elif images[n].shape[2] == 1:
+                axs[n].imshow(images[n].squeeze(), cmap='gray')
+            else:
+                axs[n].imshow(images[n])
+    plt.show()
+    
+def dtype2uint8(img):
+    if img.dtype != 'uint8':
+        result = np.uint8(img*255)
+    else:
+        result = img.copy()
+    return result
+
+def Subplot_Barchart(ydata = [], xdata = [], titles = [], number_diagram_per_row = 1):
+    number_diagrams = len(ydata)
+    if (number_diagrams % number_diagram_per_row) == 0:
+        number_rows = int(number_diagrams / number_diagram_per_row)
+    else:
+        number_rows = int(number_diagrams / number_diagram_per_row + 1)
+    fig, axs = plt.subplots(number_rows, number_diagram_per_row, figsize=(14, 4 * number_diagrams/2))
+    
+    for i in range(number_diagrams):
+        axs[i].bar(ydata[i], xdata[i])
+        axs[i].set_title(titles[i])
+    fig.tight_layout()
+    plt.show()
 
