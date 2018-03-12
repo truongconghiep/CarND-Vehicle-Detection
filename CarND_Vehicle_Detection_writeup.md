@@ -15,7 +15,7 @@ The goals / steps of this project are the following:
 * Estimate a bounding box for vehicles detected.
 
 [//]: # (Image References)
-[image1]: ./examples/car_not_car.png
+[image1]: ./output_images/CarAndNotCar.jpg
 [image2]: ./examples/HOG_example.jpg
 [image3]: ./examples/sliding_windows.jpg
 [image4]: ./examples/sliding_window.jpg
@@ -38,9 +38,9 @@ You're reading it!
 
 #### 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-The code for this step is contained in the first code cell of the IPython notebook (or in lines # through # of the file called `some_file.py`).  
+HOG feature of a single image is extracted by calling the ["get_hog_features"](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/67ec1117045f814ef2d42f0b2b4f6f1f01e808d7/lesson_functions.py#L20) function. Then I call function ["extract_features"](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/67ec1117045f814ef2d42f0b2b4f6f1f01e808d7/lesson_functions.py#L114) to get HOG feature of all images in the data set.
 
-I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
+I started by reading in all the `vehicle` and `non-vehicle` images [here](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/67ec1117045f814ef2d42f0b2b4f6f1f01e808d7/Training_Model.py#L63).  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
 ![alt text][image1]
 
