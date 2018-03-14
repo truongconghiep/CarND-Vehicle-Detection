@@ -84,6 +84,16 @@ Here's a [link to my video result](https://www.youtube.com/watch?v=l11FoZUxuu8&f
 
 I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
 
+I use a queue to record the position of positive detections in last 5 frames. After a frame is processed and some positive positions are detected. These detected positions are pushed into the queue. When the queue is full, the oldest detected positions are pop out of the queue. Then I create a heatmap from the detected positions, registered in the queue. This queue works as a buffer and smooths the detection of car through out the video. In the next step I threshold the heatmap to filter out the false detections, as well as to identify vehicle position. I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected. The video pipeline is implemented in the functions [Find_Car_In_Frame](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/5de3d8ab7eb323841ce15c1d471fa7e9728d9e1d/Detecting_In_Video.py#L15)
+
+
+
+
+
+
+
+
+
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
 ### Here are six frames and their corresponding heatmaps:
