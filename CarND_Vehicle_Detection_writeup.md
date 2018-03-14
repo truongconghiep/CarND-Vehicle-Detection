@@ -63,7 +63,7 @@ I trained a linear SVM using...
 
 #### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
-I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
+I decided to use the function [find_car](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/9f4264e3ea43335af99936a2cc4c163e36da1bc8/lesson_functions.py#L165), provived in the lessons for the implementation of sliding window. 
 
 ![alt text][image3]
 
@@ -77,7 +77,7 @@ Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spat
 ### Video Implementation
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](https://www.youtube.com/watch?v=l11FoZUxuu8&feature=youtu.be) or [here](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/master/output_test_video.mp4)
 
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
