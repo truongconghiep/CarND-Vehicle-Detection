@@ -22,6 +22,13 @@ The goals / steps of this project are the following:
 [image5]: ./output_images/frame4.png
 [image6]: ./output_images/frame5.png
 [image7]: ./output_images/frame6.png
+[image8]: ./output_images/Serie_frame1.png
+[image9]: ./output_images/Serie_frame2.png
+[image10]: ./output_images/Serie_frame3.png
+[image11]: ./output_images/Serie_frame4.png
+[image12]: ./output_images/Serie_frame5.png
+[image13]: ./output_images/Serie_frame6.png
+[image14]: ./output_images/SlidingWindow.png
 [video1]: ./project_video.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -58,18 +65,19 @@ I tried various combinations of parameters and...
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
 I trained a linear SVM using...
+To train a linear SVM, first I attract HOG-feature combined with historgram and spatial feature of all images in training set using function [extract_features](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/becb31638bcbb64c881d689348e4f90ceccd00f4/Training_Model.py#L71). Then the SVM is fit to the extracted features to determine the classifier. 
 
 ### Sliding Window Search
 
 #### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
-I decided to use the function [find_car](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/9f4264e3ea43335af99936a2cc4c163e36da1bc8/lesson_functions.py#L165), provived in the lessons for the implementation of sliding window. 
+I decided to use the function [find_car](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/9f4264e3ea43335af99936a2cc4c163e36da1bc8/lesson_functions.py#L165), provived in the lessons for the implementation of sliding window with ystart = 300 and ystop = 700. That means, we are finding cars only in the lower half of the frame. The scales for search varies from 1.25 to 3.5 to find cars with different sizes and at different distances. The picture below shows an implementation of sliding windows with different sizes and overlap:
 
-
+![alt text][image14]
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
-Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
+Ultimately I searched on seven scales ([1.25, 1.75, 2.0, 2.3, 2,7, 3.0,3.5]) using YUV 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
 
 ![alt text][image2]
 ![alt text][image3]
@@ -96,6 +104,12 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 Here are six frames and their corresponding heatmaps and outputs with labels:
 
+![alt text][image8]
+![alt text][image9]
+![alt text][image10]
+![alt text][image11]
+![alt text][image12]
+![alt text][image13]
 
 
 
