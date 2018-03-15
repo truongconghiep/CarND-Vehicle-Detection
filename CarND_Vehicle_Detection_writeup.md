@@ -16,12 +16,12 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 [image1]: ./output_images/CarAndNotCar.jpg
-[image2]: ./examples/HOG_example.jpg
-[image3]: ./examples/sliding_windows.jpg
-[image4]: ./examples/sliding_window.jpg
-[image5]: ./examples/bboxes_and_heat.png
-[image6]: ./examples/labels_map.png
-[image7]: ./examples/output_bboxes.png
+[image2]: ./output_images/frame1.jpg
+[image3]: ./output_images/frame2.jpg
+[image4]: ./output_images/frame3.jpg
+[image5]: ./output_images/frame4.png
+[image6]: ./output_images/frame5.png
+[image7]: ./output_images/frame6.png
 [video1]: ./project_video.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -71,7 +71,12 @@ I decided to use the function [find_car](https://github.com/truongconghiep/CarND
 
 Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
 
+![alt text][image2]
+![alt text][image3]
 ![alt text][image4]
+![alt text][image5]
+![alt text][image6]
+![alt text][image7]
 ---
 
 ### Video Implementation
@@ -87,24 +92,15 @@ I recorded the positions of positive detections in each frame of the video.  Fro
 I use a queue to record the position of positive detections in last 5 frames. After a frame is processed and some positive positions are detected. These detected positions are pushed into the queue. When the queue is full, the oldest detected positions are pop out of the queue. Then I create a heatmap from the detected positions, registered in the queue. This queue works as a buffer and smooths the detection of car through out the video. In the next step I threshold the heatmap to filter out the false detections, as well as to identify vehicle position. I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected. The video pipeline is implemented in the functions [Find_Car_In_Frame](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/5de3d8ab7eb323841ce15c1d471fa7e9728d9e1d/Detecting_In_Video.py#L15)
 
 
-
-
-
-
-
-
-
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
-### Here are six frames and their corresponding heatmaps:
-
+Here are six frames and their corresponding heatmaps and outputs with labels:
+![alt text][image1]
+![alt text][image2]
+![alt text][image3]
+![alt text][image4]
 ![alt text][image5]
-
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
 ![alt text][image6]
-
-### Here the resulting bounding boxes are drawn onto the last frame in the series:
-![alt text][image7]
 
 
 
