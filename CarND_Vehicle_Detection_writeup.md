@@ -16,9 +16,9 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 [image1]: ./output_images/CarAndNotCar.jpg
-[image2]: ./output_images/frame1.jpg
-[image3]: ./output_images/frame2.jpg
-[image4]: ./output_images/frame3.jpg
+[image2]: ./output_images/frame1.png
+[image3]: ./output_images/frame2.png
+[image4]: ./output_images/frame3.png
 [image5]: ./output_images/frame4.png
 [image6]: ./output_images/frame5.png
 [image7]: ./output_images/frame6.png
