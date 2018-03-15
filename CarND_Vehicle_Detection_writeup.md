@@ -1,5 +1,6 @@
-## Writeup Template
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
+## UDACITY-CarND
+## Vehicle detection
+#### Hiep Truong Cong
 
 ---
 
@@ -134,5 +135,7 @@ Here are six frames and their corresponding heatmaps and outputs with labels and
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+One of difficulties in this project is to filter out false detections. These positives are removed by heatmap threshold. Because light condition is changing, therefore the number of positives also changes. It is difficult to use only one threshold to remove false positives in different conditions.
+
+Another problem to discuss is the processing performance. The detection algorithm is too heavy, thus it takes much time to detect vehicles in a frame. Other classifier may be used to boost up the performance, for example to build a deep neural network to recognize vehicles.
 
