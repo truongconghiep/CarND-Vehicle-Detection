@@ -72,7 +72,7 @@ hog_channel = "ALL"
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
 
-To train a linear SVM, first I attract HOG-feature combined with historgram and spatial feature of all images in training set using function [extract_features](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/becb31638bcbb64c881d689348e4f90ceccd00f4/Training_Model.py#L71). Then the SVM is fit to the extracted features to determine the classifier. The classifier has an accuracy of 98.96 %
+To train a linear SVM, first I attract HOG-feature combined with historgram and spatial feature of all images in training set using function [extract_features](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/becb31638bcbb64c881d689348e4f90ceccd00f4/Training_Model.py#L71). Then the SVM is fit to the extracted features to determine the classifier (see [Training_Classifier_Pipeline](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/becb31638bcbb64c881d689348e4f90ceccd00f4/Training_Model.py#L58)). The classifier has an accuracy of 98.96 %
 
 In the next step I test the classifier with 10 labels
 <pre><code>
