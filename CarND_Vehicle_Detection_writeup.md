@@ -16,9 +16,9 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 [image1]: ./output_images/CarAndNotCar.jpg
-[image2]: ./output_images/frame1.jpg
-[image3]: ./output_images/frame2.jpg
-[image4]: ./output_images/frame3.jpg
+[image2]: ./output_images/frame1.png
+[image3]: ./output_images/frame2.png
+[image4]: ./output_images/frame3.png
 [image5]: ./output_images/frame4.png
 [image6]: ./output_images/frame5.png
 [image7]: ./output_images/frame6.png
@@ -49,7 +49,7 @@ I then explored different color spaces and different `skimage.hog()` parameters 
 Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
 
-![alt text][image2]
+
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
@@ -65,7 +65,7 @@ I trained a linear SVM using...
 
 I decided to use the function [find_car](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/9f4264e3ea43335af99936a2cc4c163e36da1bc8/lesson_functions.py#L165), provived in the lessons for the implementation of sliding window. 
 
-![alt text][image3]
+
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
@@ -95,12 +95,7 @@ I use a queue to record the position of positive detections in last 5 frames. Af
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
 Here are six frames and their corresponding heatmaps and outputs with labels:
-![alt text][image1]
-![alt text][image2]
-![alt text][image3]
-![alt text][image4]
-![alt text][image5]
-![alt text][image6]
+
 
 
 
