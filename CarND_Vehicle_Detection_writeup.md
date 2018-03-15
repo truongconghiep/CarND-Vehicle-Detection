@@ -36,11 +36,6 @@ The goals / steps of this project are the following:
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
-### Writeup / README
-
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Vehicle-Detection/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
-
-You're reading it!
 
 ### Histogram of Oriented Gradients (HOG)
 
@@ -106,7 +101,9 @@ Ultimately I searched on seven scales ([1.25, 1.75, 2.0, 2.3, 2,7, 3.0,3.5]) usi
 ![alt text][image6]
 ![alt text][image7]
 ---
-
+ 
+As we see in the pictures, a lot of false positives were detected. To reject these detections, we need a threshold to filter out the unexpected detection, as well as more scales to detect objects with different size.
+ 
 ### Video Implementation
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
@@ -117,7 +114,7 @@ Here's a [link to my video result](https://www.youtube.com/watch?v=l11FoZUxuu8&f
 
 I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected. The queue is implemented in the class [Window_buf](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/724cf433e2fc4a3923a70daa8b86d1a53cb8bf67/Finding_Car.py#L16)
 
-I use a queue to record the position of positive detections in last 5 frames. After a frame is processed and some positive positions are detected. These detected positions are pushed into the queue. When the queue is full, the oldest detected positions are pop out of the queue. Then I create a heatmap from the detected positions, registered in the queue. This queue works as a buffer and smooths the detection of car through out the video. In the next step I threshold the heatmap to filter out the false detections, as well as to identify vehicle position. I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected. The video pipeline is implemented in the functions [Find_Car_In_Frame](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/5de3d8ab7eb323841ce15c1d471fa7e9728d9e1d/Detecting_In_Video.py#L15)
+I use a queue to record the position of positive detections in last 5 subsequent frames. After a frame is processed and some positive positions are detected. These detected positions are pushed into the queue. When the queue is full, the oldest detected positions are pop out of the queue. Then I create a heatmap from the detected positions, registered in the queue. This queue works as a buffer and smooths the detection of car through out the video. In the next step I threshold the heatmap to filter out the false detections, as well as to identify vehicle position. I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected. The video pipeline is implemented in the functions [Find_Car_In_Frame](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/5de3d8ab7eb323841ce15c1d471fa7e9728d9e1d/Detecting_In_Video.py#L15)
 
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
@@ -130,8 +127,6 @@ Here are six frames and their corresponding heatmaps and outputs with labels and
 ![alt text][image11]
 ![alt text][image12]
 ![alt text][image13]
-
-
 
 ---
 
