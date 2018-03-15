@@ -49,7 +49,7 @@ I then explored different color spaces and different `skimage.hog()` parameters 
 Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
 
-![alt text][image2]
+
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
@@ -65,7 +65,7 @@ I trained a linear SVM using...
 
 I decided to use the function [find_car](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/9f4264e3ea43335af99936a2cc4c163e36da1bc8/lesson_functions.py#L165), provived in the lessons for the implementation of sliding window. 
 
-![alt text][image3]
+
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
