@@ -29,6 +29,7 @@ The goals / steps of this project are the following:
 [image12]: ./output_images/Serie_frame5.png
 [image13]: ./output_images/Serie_frame6.png
 [image14]: ./output_images/SlidingWindow.png
+[image15]: ./output_images/Hog_vis.png
 [video1]: ./project_video.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -60,12 +61,31 @@ Here is an example using the `YCrCb` color space and HOG parameters of `orientat
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
-I tried various combinations of parameters and...
+To choose HOG parameters, I tried various combinations of parameters and choose the 'LUV' color space because this color space seperates the luminance component from the other two color components. The other three parameters are chosen such that the HOG feature is representative and concise as well. I grabbed two images from each of the two classes and displayed them to get a feel for what the skimage.hog() output looks like.
+
+![alt text][image15]
+
+The other HOG parameters are chosen as follows:
+
+<pre><code>
+orient = 9
+pix_per_cell = 8
+cell_per_block = 2
+hog_channel = "ALL"
+</code></pre>
 
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using...
-To train a linear SVM, first I attract HOG-feature combined with historgram and spatial feature of all images in training set using function [extract_features](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/becb31638bcbb64c881d689348e4f90ceccd00f4/Training_Model.py#L71). Then the SVM is fit to the extracted features to determine the classifier. 
+
+To train a linear SVM, first I attract HOG-feature combined with historgram and spatial feature of all images in training set using function [extract_features](https://github.com/truongconghiep/CarND-Vehicle-Detection/blob/becb31638bcbb64c881d689348e4f90ceccd00f4/Training_Model.py#L71). Then the SVM is fit to the extracted features to determine the classifier. The classifier has an accuracy of 98.96 %
+
+In the next step I test the classifier with 10 labels
+<pre><code>
+Test Accuracy of SVC =  0.9896
+My SVC predicts:  [0. 1. 1. 1. 0. 1. 1. 1. 0. 0.]
+For these 10 labels:  [0. 1. 1. 1. 0. 1. 1. 1. 0. 0.]
+0.01602 Seconds to predict 10 labels with SVC
+</code></pre>
 
 ### Sliding Window Search
 
@@ -102,7 +122,7 @@ I use a queue to record the position of positive detections in last 5 frames. Af
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
-Here are six frames and their corresponding heatmaps and outputs with labels:
+Here are six frames and their corresponding heatmaps and outputs with labels and detection smoothing:
 
 ![alt text][image8]
 ![alt text][image9]
