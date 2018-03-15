@@ -95,12 +95,7 @@ I use a queue to record the position of positive detections in last 5 frames. Af
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
 Here are six frames and their corresponding heatmaps and outputs with labels:
-![alt text][image1]
-![alt text][image2]
-![alt text][image3]
-![alt text][image4]
-![alt text][image5]
-![alt text][image6]
+
 
 
 
