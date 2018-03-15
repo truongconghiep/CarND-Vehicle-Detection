@@ -34,9 +34,9 @@ def Processing_video(input_video, output_video):
     white_clip.write_videofile(output_video, audio=False)
 
 dirName ='./FeatureSetBig'
-Classifier = Training_Classifier_Pipeline(dirName, color_space = 'YUV',
-#                                            orient = 11, pix_per_cell=16,
-                                            spatial_size=(16,16))
+# Classifier = Training_Classifier_Pipeline(dirName, color_space = 'YUV',
+# #                                            orient = 11, pix_per_cell=16,
+#                                             spatial_size=(16,16))
 
 img = mpimg.imread('./test_images/test1.jpg')
 svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins = ReadSvcFromPickle('Svm.pkl')
@@ -44,7 +44,7 @@ ystart = 300
 ystop = 700
 colorspace = 'YUV' # Can be RGB, HSV, LUV, HLS, YUV, YCrCb
 scales = [1.5,2.0, 2.3, 2,7, 3.0,3.5]
-heatmap_threshold = 3
+heatmap_threshold = 5
 buffer = Window_buf(10)
 
 input_project_video = './test_videos/challenge.mp4'
